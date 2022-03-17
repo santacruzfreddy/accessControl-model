@@ -4,9 +4,44 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.qnkStartUp</groupId>
 	<artifactId>accessControl.model</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>{$VERSION_ACCESSO_MODEL}</version>
 	<name>accessControl.model</name>
 	<description>Project to create complete model of the accessControl </description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.3.2.RELEASE</version>
+	</parent>
+
+	<profiles>
+		<profile>
+			<id>des</id>
+			<activation>
+				<property>
+					<name>snapshot</name>
+					<value>des</value>
+				</property>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+			<VERSION_ACCESSO_MODEL>0.0.1-SNAPSHOT</VERSION_ACCESSO_MODEL>
+			</properties>
+		</profile>
+		<profile>
+			<id>pro</id>
+			<activation>
+				<property>
+					<name>release</name>
+					<value>pro</value>
+				</property>
+			</activation>
+			<properties>
+				<VERSION_ACCESSO_MODEL>0.0.1-RELEASE</VERSION_ACCESSO_MODEL>
+			</properties>
+		</profile>
+	</profiles>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -15,29 +50,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.22</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-	<pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.7</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
-			</plugin>
-		</plugins>
-	</pluginManagement>
-	</build>
 </project>
