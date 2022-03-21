@@ -17,4 +17,12 @@ public class Option_Scheme {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "scheme_id")
+    private Scheme scheme;
+
+    @ManyToOne
+    @JoinColumn(name = "option_id")
+    private Option option;
+
 }

@@ -2,12 +2,7 @@ package com.qnkStartUp.accessControl.model.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import java.util.List;
 
@@ -26,6 +21,10 @@ public class App {
 
     Boolean use_scheme;
 
-    @OneToMany
+    @OneToMany(mappedBy = "app", fetch = FetchType.LAZY)
     List<Scheme> schemes;
+
+    @ManyToOne
+    @JoinColumn(name = "startUp_id")
+    private StartUp startup;
 }

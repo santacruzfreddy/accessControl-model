@@ -3,6 +3,7 @@ package com.qnkStartUp.accessControl.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "startups")
@@ -11,9 +12,13 @@ public class StartUp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long startUp_id;
+    Long startup_id;
 
-    String startUp_name;
+    String startup_name;
 
-    String startUp_description;
+    String startup_description;
+
+    @OneToMany(mappedBy = "startup" , fetch = FetchType.LAZY)
+    private List<App> apps;
+
 }

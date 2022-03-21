@@ -3,6 +3,7 @@ package com.qnkStartUp.accessControl.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "options")
@@ -19,8 +20,13 @@ public class Option {
 
     String path;
 
-    int order;
+    Integer number_order;
 
-    int level;
+    Integer level;
 
+    @OneToMany(mappedBy = "option")
+    private List<Option_Scheme> schemes;
+
+    @OneToMany(mappedBy = "option", fetch = FetchType.LAZY)
+    private  List<Option_Category> categories;
 }

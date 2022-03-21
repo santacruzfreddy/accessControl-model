@@ -17,4 +17,8 @@ public class Password {
 
     LocalDateTime time_active;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }

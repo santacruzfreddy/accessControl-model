@@ -18,9 +18,13 @@ public class Scheme {
 
     String scheme_description;
 
-    @OneToOne
-    Configuration configuration;
-
-    @OneToMany
+    @OneToMany(mappedBy = "scheme", fetch = FetchType.LAZY)
     List<Feature> features;
+
+    @ManyToOne
+    @JoinColumn(name = "app_id")
+    private App app;
+
+    @OneToMany(mappedBy = "scheme", fetch = FetchType.LAZY)
+    private List<Option_Scheme> options;
 }

@@ -17,6 +17,6 @@ public class User {
 
     String user_name;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     List<Password> passwords;
 }
